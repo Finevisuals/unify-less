@@ -1,0 +1,320 @@
+.r-flex(
+  @xs-direction, @xs-align, @xs-justify, @xs-wrap,
+  @s-direction, @s-align, @s-justify, @s-wrap,
+  @m-direction, @m-align, @m-justify, @m-wrap,
+  @l-direction, @l-align, @l-justify, @l-wrap,
+  @xl-direction, @xl-align, @xl-justify, @xl-wrap
+) {
+
+  @media @xl {
+    .flex(@xl-direction, @xl-align, @xl-justify, @xl-wrap);
+  }
+
+  @media @l {
+    .flex(@l-direction, @l-align, @l-justify, @l-wrap);
+  }
+  
+  @media @m {
+    .flex(@m-direction, @m-align, @m-justify, @m-wrap);
+  }
+
+  @media @s {
+    .flex(@s-direction, @s-align, @s-justify, @s-wrap);
+  }
+  
+  @media @xs {
+    .flex(@xs-direction, @xs-align, @xs-justify, @xs-wrap);
+  }
+}
+
+.r-mp(
+  @xs-margin, @xs-padding,
+  @s-margin, @s-padding,
+  @m-margin, @m-padding,
+  @l-margin, @l-padding,
+  @xl-margin, @xl-padding
+) {
+
+  @media @xl {
+    .mp(@xl-margin, @xl-padding);
+  }
+
+  @media @l {
+    .mp(@l-margin, @l-padding);
+  }
+
+  @media @m {
+    .mp(@m-margin, @m-padding);
+  }
+
+  @media @s {
+    .mp(@s-margin, @s-padding);
+  }
+
+  @media @xs {
+    .mp(@xs-margin, @xs-padding);
+  }
+}
+
+.r-max(
+  @xs-max-width,
+  @s-max-width,
+  @m-max-width,
+  @l-max-width,
+  @xl-max-width
+) {
+
+  @media @xl {
+    .max(@xl-max-width);
+  }
+
+  @media @l {
+    .max(@l-max-width);
+  }
+
+  @media @m {
+    .max(@m-max-width);
+  }
+
+  @media @s {
+    .max(@s-max-width);
+  }
+
+  @media @xs {
+    .max(@xs-max-width);
+  }
+}
+
+.xs-size(@xs-width, @xs-height) {
+  @media @xs {
+    .size(@xs-width, @xs-height);
+  }
+}
+
+.s-size(@s-width, @s-height) {
+  @media @s {
+    .size(@s-width, @s-height);
+  }
+}
+
+.m-size(@m-width, @m-height) {
+  @media @m {
+    .size(@m-width, @m-height);
+  }
+}
+
+.l-size(@l-width, @l-height) {
+  @media @l {
+    .size(@l-width, @l-height);
+  }
+}
+
+.xl-size(@xl-width, @xl-height) {
+  @media @xl {
+    .size(@xl-width, @xl-height);
+  }
+}
+
+.r-size(
+  @xs-width, @xs-height,
+  @s-width, @s-height,
+  @m-width, @m-height,
+  @l-width, @l-height,
+  @xl-width, @xl-height
+) {
+  .xl-size(@xl-width, @xl-height);
+  .l-size(@l-width, @l-height);
+  .m-size(@m-width, @m-height);
+  .s-size(@s-width, @s-height);
+  .xs-size(@xs-width, @xs-height);
+}
+
+.flex(@direction: row, @align: flex-start, @justify: flex-start, @wrap: nowrap) {
+  display: flex;
+  flex-direction: @direction;
+  align-items: @align;
+  justify-content: @justify;
+  flex-wrap: @wrap;
+}
+
+.row(@align: flex-start, @justify: flex-start, @wrap: nowrap) {
+  display: flex;
+  flex-direction: row;
+  align-items: @align;
+  justify-content: @justify;
+  flex-wrap: @wrap;
+}
+
+.column(@align: flex-start, @justify: flex-start, @wrap: nowrap) {
+  display: flex;
+  flex-direction: column;
+  align-items: @align;
+  justify-content: @justify;
+  flex-wrap: @wrap;
+}
+
+.max(@max-width) {
+  width: 100%;
+  max-width: @max-width;
+}
+
+.mp(@margin, @padding) {
+  margin: @margin;
+  padding: @padding;
+}
+
+.size(@width, @height) {
+  width: @width;
+  height: @height;
+}
+
+.stretch(@position: absolute) {
+  position: @position;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.center() {
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  margin: 0 auto;
+  transform: translateY(-50%);
+}
+
+.shadow() {
+  box-shadow: 0 0 15px 1px fade(@dark, 15%);
+}
+
+.animate(@property: all) {
+  transition: @property 0.25s ease-in-out;
+}
+
+.background(@background) {
+  background: @background;
+  color: contrast(@background, @text-dark, @text-light);
+}
+
+.pointer() {
+  &,* {
+    cursor: pointer;
+  }
+}
+
+.normalize(@font: Helvetica) {
+  html, body {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    font-family: @font;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: @text-dark;
+  }
+
+  *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  /**
+   * Make all elements display: block and remove all paddings
+   * and margins. Everything shall be styled based on this
+   * in order to remove weird cross browser issues with default
+   * styles.
+   */
+  body * {
+    margin: 0;
+    padding: 0;
+    display: block;
+    box-sizing: border-box;
+    font-family: @font;
+    font-weight: normal;
+    direction: ltr;
+    color: inherit;
+    border: none;
+    background: unset;
+    text-decoration: none;
+    -webkit-appearance: unset;
+  }
+
+  /**
+   * Prevent default coloring for anchor tags. Default color
+   * should equal the currently set color of the parent.
+   */
+  a {
+    color: inherit;
+  }
+
+  /**
+   * Ensure pointer for all buttons and anchors
+   */
+  a, button, a *, button * {
+    cursor: pointer;
+  }
+
+  .html-text, .html-text * {
+    line-height: 1.6;
+
+    + * {
+      margin-top: 1em;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+    }
+
+    h4 {
+      font-size: 1.25rem;
+    }
+
+    h5 {
+      font-size: 1.125rem;
+    }
+
+    h6 {
+      font-weight: bold;
+    }
+
+    ul, ol {
+      padding-left: 2rem;
+
+      li {
+        display: list-item;
+
+        + li {
+          margin-top: 0.25em;
+        }
+      }
+    }
+
+    ul {
+      list-style-type: circle;
+    }
+
+    ol {
+      list-style-type: decimal;
+    }
+
+    img {
+      .size(100%, auto);
+    }
+
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        color: @main;
+      }
+    }
+  }
+}
