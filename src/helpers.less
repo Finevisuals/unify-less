@@ -255,66 +255,78 @@
   }
 
   .html-text, .html-text * {
-    line-height: 1.6;
+    .html();
+  }
+}
 
-    + * {
-      margin-top: 1em;
-    }
+.html () {
+  line-height: 1.6;
 
-    h1 {
-      font-size: 2.5rem;
-    }
+  + * {
+    margin-top: 1em;
+  }
 
-    h2 {
-      font-size: 2rem;
-    }
+  h1 {
+    font-size: 2.5rem;
+  }
 
-    h3 {
-      font-size: 1.5rem;
-    }
+  h2 {
+    font-size: 2rem;
+  }
 
-    h4 {
-      font-size: 1.25rem;
-    }
+  h3 {
+    font-size: 1.5rem;
+  }
 
-    h5 {
-      font-size: 1.125rem;
-    }
+  h4 {
+    font-size: 1.25rem;
+  }
 
-    h6 {
-      font-weight: bold;
-    }
+  h5 {
+    font-size: 1.125rem;
+  }
 
-    ul, ol {
-      padding-left: 2rem;
+  h6 {
+    font-weight: bold;
+  }
 
-      li {
-        display: list-item;
+  ul, ol {
+    padding-left: 2rem;
 
-        + li {
-          margin-top: 0.25em;
-        }
+    li {
+      display: list-item;
+
+      + li {
+        margin-top: 0.25em;
       }
     }
+  }
 
-    ul {
-      list-style-type: circle;
+  ul {
+    list-style-type: circle;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  img {
+    .size(100%, auto);
+  }
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      color: @main;
     }
+  }
 
-    ol {
-      list-style-type: decimal;
-    }
+  strong {
+    font-weight: bold;
+  }
 
-    img {
-      .size(100%, auto);
-    }
-
-    a {
-      text-decoration: underline;
-
-      &:hover {
-        color: @main;
-      }
-    }
+  span, a, strong, i {
+    display: inline;
   }
 }
